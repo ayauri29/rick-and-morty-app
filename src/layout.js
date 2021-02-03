@@ -129,9 +129,9 @@ function Layout({ name, image, description, next }) {
         <Dot />
       </span>
       <div></div>
-      <div class="learn-more-area">
+      {/* <div class="learn-more-area">
         <LearnMore />
-      </div>
+      </div> */}
       <div className="next-area">{next}</div>
     </LayoutStyled>
   );

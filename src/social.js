@@ -18,13 +18,13 @@ const SocialStyled = styled.div`
 function Social() {
   return (
     <SocialStyled>
-      <a href="https://instagram.com/LeonidasEsteban">
+      <a href="https://instagram.com">
         <img src="./images/instagram.svg" alt="" />
       </a>
-      <a href="https://facebook.com/LeonidasEsteban">
+      <a href="https://facebook.com">
         <img src="./images/facebook.svg" alt="" />
       </a>
-      <a href="https://twitter.com/LeonidasEsteban">
+      <a href="https://twitter.com">
         <img src="./images/twitter.svg" alt="" />
       </a>
     </SocialStyled>
