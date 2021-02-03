@@ -2,14 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const CharacterStyled = styled.div`
-  display: flex;
-  align-items: center;
-  grid-area: character-name;
-  .name {
     position: relative;
     font-size: 30px;
-  }
-  .name h2:after {
+  h2:after {
     content: "";
     width: 87px;
     height: 6px;
@@ -21,12 +16,8 @@ const CharacterStyled = styled.div`
   }
 
   @media screen and (max-width: 1024px) {
-    margin-top: 1em;
-    justify-content: center;
-  .name {
     text-align: center;
-  }
-  .name h2:after {
+  h2:after {
     left: 0;
     top: calc(100% - 20px);
   }
@@ -36,9 +27,7 @@ const CharacterStyled = styled.div`
 function CharacterName({ name }) {
   return (
     <CharacterStyled>
-      <div className="name">
         <h2>{name}</h2>
-      </div>
     </CharacterStyled>
   )
 }

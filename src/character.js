@@ -1,28 +1,50 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import API from './api'
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import CharacterName from "./character-name";
+import CharacterImage from "./character-image";
+import CharacterDescription from "./character-description";
+import CharacterPlaceholder from "./character-placeholder";
+import Layout from "./layout";
+import Next from "./next";
+import CharacterContext from "./character-context";
+import api from "./api";
 
-const api = new API()
+const CharacterStyled = styled.div``;
 
-const CharacterStyled = styled.div`
-
-`
-
-function Character() {
-  const [character, setCharacter] = useState({})
-
+function Character({match}) {
+  const [character, setCharacter] = useState({});
   useEffect(() => {
     async function getCharacter() {
-      setCharacter(await api.getCharacter(1))
+      console.log(match)
+      setCharacter(await api.getCharacter(match.params.id || 1));
     }
-    getCharacter()
-  }, [])
+    getCharacter();
+  }, [match.params.id]);
 
   return (
     <CharacterStyled>
-      {character.name}
+      <CharacterContext.Provider
+        value={{
+          character,
+          setCharacter,
+        }}
+      >
+        <CharacterPlaceholder name={character.name} />
+        <Layout
+          next={<Next />}
+          name={<CharacterName name={character.name} />}
+          image={<CharacterImage image={character.image} />}
+          description={
+            <CharacterDescription
+              gender={character.gender}
+              species={character.species}
+              status={character.status}
+            />
+          }
+        />
+      </CharacterContext.Provider>
     </CharacterStyled>
-  )
+  );
 }
 
-export default Character
+export default Character;
